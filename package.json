@@ -1,0 +1,22 @@
+{
+  "name": "pixelmon-json-reader",
+  "version": "1.0.0",
+  "description": "displays info regarding pixelmons external json files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeyImRuu/pixelmon-json-reader.git"
+  },
+  "keywords": [
+    "pixelmon"
+  ],
+  "author": "HeyImRuu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeyImRuu/pixelmon-json-reader/issues"
+  },
+  "homepage": "https://github.com/HeyImRuu/pixelmon-json-reader#readme"
+}
