@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    script(src='vendor/chartjs/Chart.js')
+    link(rel='stylesheet' href='vendor/chartjs/Chart.css')
+  body
+    .chart-container(style='position: relative; height:100vh; width:100vw')
+      canvas#myChart
+    script.
+      var o = JSON.parse('!{JSON.stringify(o)}');
+      var rarities = []
+      var raritiesColours = []
+      var raritiesNames = []
+      function getData(group,timeCondition,biomeCondition) {
+        rarities = []
+        raritiesColours = []
+        raritiesNames = []
+        for (let i = 0; i < o[group].length; i++) {
+          for (let j = 0; j < o[group][i].spawnInfos.length; j++) {
+            //console.log(o[group][i].spawnInfos[j])
+            if(o[group][i].spawnInfos[j].hasOwnProperty("condition") && o[group][i].spawnInfos[j]["condition"].hasOwnProperty("times") && o[group][i].spawnInfos[j]["condition"].times.includes(timeCondition) && o[group][i].spawnInfos[j]["condition"].stringBiomes.includes(biomeCondition)) {
+              rarities.push(o[group][i].spawnInfos[j]["rarity"]);
+              raritiesNames.push(o[group][i].spawnInfos[j]["spec"].name)
+              raritiesColours.push("rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")")
+            }
+            //condition not met
+          }
+        }
+      }
+      getData("fishing","NIGHT","oceanic")
+
+
+
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var data = {
+      datasets: [{
+        data: rarities,
+        backgroundColor: raritiesColours
+      }],
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: raritiesNames
+      };
+      var myDoughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: data
+      });
+      function resetCanvas() {
+        myDoughnutChart.destroy()
+        var data = {
+          datasets: [{
+            data: rarities,
+            backgroundColor: raritiesColours
+          }],
+          // These labels appear in the legend and in the tooltips when hovering different arcs
+          labels: raritiesNames
+          };
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myDoughnutChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: data
+          });
+      }

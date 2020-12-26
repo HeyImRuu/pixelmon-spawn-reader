@@ -4,7 +4,8 @@
   "description": "displays info regarding pixelmons external json files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/HeyImRuu/pixelmon-json-reader/issues"
   },
-  "homepage": "https://github.com/HeyImRuu/pixelmon-json-reader#readme"
+  "homepage": "https://github.com/HeyImRuu/pixelmon-json-reader#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
+    "pug": "^3.0.0"
+  }
 }
