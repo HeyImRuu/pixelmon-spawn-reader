@@ -48,7 +48,7 @@ html(lang='en')
       data: data
       });
       function resetCanvas() {
-        myDoughnutChart.destroy()
+        
         var data = {
           datasets: [{
             data: rarities,
@@ -57,8 +57,11 @@ html(lang='en')
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: raritiesNames
           };
+
         var ctx = document.getElementById('myChart').getContext('2d');
-        var myDoughnutChart = new Chart(ctx, {
+        if(window.myDoughnutChart != undefined)
+          window.myDoughnutChart.destroy();
+        window.myDoughnutChart = new Chart(ctx, {
           type: 'doughnut',
           data: data
           });
